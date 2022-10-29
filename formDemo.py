@@ -9,7 +9,7 @@ driver = webdriver.Chrome(service=service_obj)
 driver.get("https://rahulshettyacademy.com/angularpractice/")
 
 driver.find_element(By.NAME, "email").send_keys("akashbajpai@gmail.com")
-driver.find_element(By.ID, "exampleInputPassword1").send_keys("aka475pai")
+driver.find_element(By.ID, "exampleInputPassword1").send_keys("12345678")
 driver.find_element(By.ID, "exampleCheck1").click()
 s = Select(driver.find_element(By.ID, "exampleFormControlSelect1"))
 s.select_by_index(1)
