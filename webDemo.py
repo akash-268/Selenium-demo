@@ -12,4 +12,8 @@ print(driver.current_url)
 driver.get("https://www.google.com/")
 driver.minimize_window()
 
+driver.back()
+driver.refresh()
+driver.forward()
+
 driver.close()
