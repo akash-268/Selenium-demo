@@ -14,7 +14,7 @@ driver.find_element(By.ID, "exampleCheck1").click()
 s = Select(driver.find_element(By.ID, "exampleFormControlSelect1"))
 s.select_by_index(1)
 
-age = 25
+age = 22
 if age < 18:
     driver.find_element(By.ID, "inlineRadio1").click()
 else:
@@ -23,7 +23,7 @@ else:
 # XPath => //tag-name[@attribute='value] -> //input[@type='submit']
 driver.find_element(By.XPATH, "//input[@type='submit']").click()
 
-# CSS Selector => tag-name[attribute='value'] -> input[type='submit]
+# CSS Selector => tag-name[attribute='value'] -> input[type='submit], #ID, .classname
 driver.find_element(By.CSS_SELECTOR, "input[name='name']").send_keys("Akash Bajpai")
 
 message = driver.find_element(By.CLASS_NAME, "alert-success").text
