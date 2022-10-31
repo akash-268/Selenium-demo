@@ -13,17 +13,31 @@ driver.get("https://rahulshettyacademy.com/seleniumPractise/")
 query = 'ber'
 driver.find_element(By.CSS_SELECTOR, "input[type='search']").send_keys(query)
 time.sleep(1)
-li = driver.find_elements(By.CSS_SELECTOR, "div[class='products'] div[class='product'] div[class='product-action'] button")
+li = driver.find_elements(By.CSS_SELECTOR,
+                          "div[class='products'] div[class='product'] div[class='product-action'] button")
 for i in li:
     i.click()
 
-driver.find_element(By.CLASS_NAME,"cart-icon").click()
-driver.find_element(By.CSS_SELECTOR,"div[class='action-block'] button").click()
+driver.find_element(By.CLASS_NAME, "cart-icon").click()
+driver.find_element(By.CSS_SELECTOR, "div[class='action-block'] button").click()
 
-sum=0
+sum = 0
+
+prices = driver.find_elements(By.CSS_SELECTOR, "tr td:nth-child(5) p")
+for i in prices:
+    sum += int(i.text)
+print(sum)
+
+x = int(driver.find_element(By.CLASS_NAME, "totAmt").text)
+if x == sum:
+    print("YES")
+else:
+    print("NO")
+assert x == sum
 # driver.find_elements(By.CLASS_NAME,"amount").
-driver.find_element(By.CSS_SELECTOR,"div[class='promoWrapper'] input[class='promoCode']").send_keys("rahulshettyacademy")
-driver.find_element(By.CLASS_NAME,"promoBtn").click()
+driver.find_element(By.CSS_SELECTOR, "div[class='promoWrapper'] input[class='promoCode']").send_keys(
+    "rahulshettyacademy")
+driver.find_element(By.CLASS_NAME, "promoBtn").click()
 wait = WebDriverWait(driver, 20)
-wait.until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR,".promoInfo")))
-assert driver.find_element(By.CLASS_NAME,"promoInfo").is_displayed()
+wait.until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, ".promoInfo")))
+assert driver.find_element(By.CLASS_NAME, "promoInfo").is_displayed()
